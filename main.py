@@ -1,6 +1,11 @@
 """
     Aplikasi deteksi gempa terkini
+    Modularisasi dengan Function
+"""
 
+def ekstraksi_data():
+
+    """
     Tanggal: 28 Agustus 2022
     Waktu: 15:09:56 WIB
     Magnitudo: 4.3
@@ -10,8 +15,6 @@
     Dirasakan: (Skala MMI) II-III Sumbawa Barat
     :return:
 """
-def ekstraksi_data():
-
     hasil = dict()
     hasil['Tanggal'] = '28 Agustus 2022'
     hasil['Waktu'] = '15:09:56 WIB'
