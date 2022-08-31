@@ -26,6 +26,31 @@ def ekstraksi_data():
         tanggal = result[0]
         waktu = result[1]
 
+        result = soup.find('div',{'class':'col-md-6 col-xs-6 gempabumi-detail no-padding'})
+        result = soup.findChildren('li')
+        i = 0
+        magnitudo = None
+        kedalaman = None
+        ls = None
+        bt = None
+        lokasi = None
+        dirasakan = None
+
+        for res in result:
+            if i == 1:
+                magnitudo = res.text
+            elif i == 2:
+                kedalaman = res.text
+            elif i == 3:
+                koordinat = res.text.split(' - ')
+                ls = koordinat[0]
+                bt = koordinat[1]
+            elif i == 4:
+                lokasi = res.text
+            elif i == 5:
+                dirasakan = res.text
+            i = i + 1
+
 
 
 
