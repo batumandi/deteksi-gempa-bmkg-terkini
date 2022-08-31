@@ -27,7 +27,7 @@ def ekstraksi_data():
         waktu = result[1]
 
         result = soup.find('div',{'class':'col-md-6 col-xs-6 gempabumi-detail no-padding'})
-        result = soup.findChildren('li')
+        result = result.findChildren('li')
         i = 0
         magnitudo = None
         kedalaman = None
@@ -42,7 +42,7 @@ def ekstraksi_data():
             elif i == 2:
                 kedalaman = res.text
             elif i == 3:
-                koordinat = res.text.split(' - ')
+                koordinat = res.text.split('-')
                 ls = koordinat[0]
                 bt = koordinat[1]
             elif i == 4:
@@ -55,12 +55,13 @@ def ekstraksi_data():
 
 
         hasil = dict()
-        hasil['Tanggal'] = tanggal #'28 Agustus 2022'
-        hasil['Waktu'] = waktu #'15:09:56 WIB'
-        hasil['Magnitudo'] = 4.3
-        hasil['Koordinat'] = {'LS': 9.49, 'BT': 117.14}
-        hasil['Lokasi'] = 'laut 87 km Tenggara SumbawaBarat'
-        hasil['Dirasakan'] = '(Skala MMI) II-III Sumbawa Barat'
+        hasil['tanggal'] = tanggal
+        hasil['waktu'] = waktu
+        hasil['magnitudo'] = magnitudo
+        hasil['kedalaman'] = kedalaman
+        hasil['koordinat'] = {'ls': ls, 'bt': bt}
+        hasil['lokasi'] = lokasi
+        hasil['dirasakan'] = dirasakan
 
         #print(hasil)
         return hasil
@@ -72,9 +73,10 @@ def tampilkan_data(result):
         print('Tidak ada data gempa terkini')
         return
     print('\nGempa terakhir terjadi pada:')
-    print(f"Tanggal {result['Tanggal']}")
-    print(f"Waktu {result['Waktu']}")
-    print(f"Magnitudo {result['Magnitudo']}")
-    print(f"Koordinat LS: {result['Koordinat']['LS']}, BT: {result['Koordinat']['BT']}")
-    print(f"Lokasi {result['Lokasi']}")
-    print(f"Dirasakan {result['Dirasakan']}")
+    print(f"Tanggal {result['tanggal']}")
+    print(f"Waktu {result['waktu']}")
+    print(f"Magnitudo {result['magnitudo']}")
+    print(f"Kedalaman {result['kedalaman']}")
+    print(f"Koordinat LS: {result['koordinat']['ls']}, BT: {result['koordinat']['bt']}")
+    print(f"Lokasi {result['lokasi']}")
+    print(f"Dirasakan {result['dirasakan']}")
