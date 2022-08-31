@@ -20,18 +20,21 @@ def ekstraksi_data():
         return None
     if content .status_code == 200:
         soup = BeautifulSoup(content.text, 'html.parser')
+
         result = soup.find('span', {'class': 'waktu'})
         result = result.text.split(',')
         tanggal = result[0]
         waktu = result[1]
 
 
+
+
         hasil = dict()
         hasil['Tanggal'] = tanggal #'28 Agustus 2022'
         hasil['Waktu'] = waktu #'15:09:56 WIB'
         hasil['Magnitudo'] = 4.3
-        hasil['Lokasi'] = {'LS': 9.49, 'BT': 117.14}
-        hasil['Pusat Gempa'] = 'laut 87 km Tenggara SumbawaBarat'
+        hasil['Koordinat'] = {'LS': 9.49, 'BT': 117.14}
+        hasil['Lokasi'] = 'laut 87 km Tenggara SumbawaBarat'
         hasil['Dirasakan'] = '(Skala MMI) II-III Sumbawa Barat'
 
         #print(hasil)
@@ -47,6 +50,6 @@ def tampilkan_data(result):
     print(f"Tanggal {result['Tanggal']}")
     print(f"Waktu {result['Waktu']}")
     print(f"Magnitudo {result['Magnitudo']}")
-    print(f"Lokasi LS: {result['Lokasi']['LS']}, BT: {result['Lokasi']['BT']}")
-    print(f"Pusat Gempa {result['Pusat Gempa']}")
+    print(f"Koordinat LS: {result['Koordinat']['LS']}, BT: {result['Koordinat']['BT']}")
+    print(f"Lokasi {result['Lokasi']}")
     print(f"Dirasakan {result['Dirasakan']}")
